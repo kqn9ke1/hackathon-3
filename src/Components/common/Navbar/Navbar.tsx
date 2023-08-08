@@ -10,13 +10,17 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GridViewIcon from "@mui/icons-material/GridView";
 import { MenuItem } from "@mui/material";
+import { authContext } from "../../contexts/AuthContext/AuthContext";
+import { IAuthContextTypes } from "../../contexts/AuthContext/types";
 
 const settings = ["Profile", "Elect", "Favorite", "Logout"];
 
 function Navbar() {
+  const navigate = useNavigate();
+  const { logout, login } = React.useContext(authContext) as IAuthContextTypes;
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -141,12 +145,29 @@ function Navbar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography
+                    textAlign="center"
+                    onClick={() =>
+                      setting === "Logout"
+                        ? logout()
+                        : setting === "Elect"
+                        ? navigate("/elect")
+                        : setting === "Favorite"
+                        ? navigate("/favorite")
+                        : navigate("/")
+                    }
+                  >
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <IconButton sx={{ marginLeft: 3, color: "white", fontSize: "18px" }}>
+          <IconButton
+            sx={{ marginLeft: 3, color: "white", fontSize: "18px" }}
+            component={Link}
+            to="/auth"
+          >
             log In
           </IconButton>
         </Toolbar>
