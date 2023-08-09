@@ -7,6 +7,10 @@ export type usersContextType = {
   pageTotalCount: number;
   setPage: (num: number) => void;
   getFilteredUsers: ({ gender }: { gender: string }) => void;
+  addUser: (newUser: newUser) => void;
+  deleteUser: (id: number) => void;
+  editUser: (newData: user) => void;
+  getOneUser: (id: number) => void;
 };
 export type user = {
   id: number;
@@ -18,6 +22,15 @@ export type user = {
   gender: string;
   email: string;
 };
+export interface newUser {
+  name: string;
+  age: number;
+  image: string;
+  hobbies: string[];
+  description: string;
+  email: string;
+  gender: string;
+}
 
 export type initSateType = {
   pageTotalCount: any;
