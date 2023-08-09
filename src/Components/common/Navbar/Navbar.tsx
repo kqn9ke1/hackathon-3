@@ -15,6 +15,7 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import { MenuItem } from "@mui/material";
 import { authContext } from "../../contexts/AuthContext/AuthContext";
 import { IAuthContextTypes } from "../../contexts/AuthContext/types";
+import LiveSearch from "../LiveSearch/LiveSearch";
 
 const settings = ["Profile", "Elect", "Favorite", "Logout"];
 
@@ -170,6 +171,7 @@ function Navbar() {
           >
             log In
           </IconButton>
+          <LiveSearch />
         </Toolbar>
       </Container>
     </AppBar>
