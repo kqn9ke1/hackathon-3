@@ -9,19 +9,26 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
 import { Link, useNavigate } from "react-router-dom";
 import GridViewIcon from "@mui/icons-material/GridView";
 import { MenuItem } from "@mui/material";
 import { authContext } from "../../contexts/AuthContext/AuthContext";
 import { IAuthContextTypes } from "../../contexts/AuthContext/types";
+import { CardMedia } from "@mui/material";
+import { Button } from "semantic-ui-react";
+import "../Navbar/Navbar.css";
+import { useState } from "react";
 import LiveSearch from "../LiveSearch/LiveSearch";
 
-const settings = ["Profile", "Elect", "Favorite", "Logout"];
+const settings = ["Profile", "Elect", "Favorite"];
 
 function Navbar() {
+  const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
-  const { logout, login } = React.useContext(authContext) as IAuthContextTypes;
+  const { logout, login, user } = React.useContext(
+    authContext
+  ) as IAuthContextTypes;
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -45,7 +52,13 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#fd5068" }}>
+    <AppBar
+      position="static"
+      sx={{
+        background: "linear-gradient(45deg,rgb(255 52 86), rgb(255 96 81))",
+        boxShadow: "0 0px 10px 0px rgba(0, 0, 0, 0.167)",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -90,33 +103,12 @@ function Navbar() {
               display: "flex",
             }}
           >
-            <WhatshotIcon />
-
-            <Typography
-              variant="h6"
-              sx={{ display: { xs: "none", md: "flex" } }}
-            >
-              Tinder
-            </Typography>
+            <CardMedia
+              component={"img"}
+              src="https://www.tinderpressroom.com/download/wordmark-R-white-RGB.png"
+              sx={{ width: "103px" }}
+            ></CardMedia>
           </Box>
-
-          <Typography
-            variant="h5"
-            noWrap
-            component={Link}
-            to="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontWeight: 500,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Tinder
-          </Typography>
           <Box sx={{ flexGrow: 1, display: "flex" }}>
             <IconButton component={Link} to="/users">
               <GridViewIcon sx={{ color: "white" }} />
@@ -125,7 +117,10 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://secure.gravatar.com/avatar/33dbb14aede9bc48aa232b1d52faef54.jpg?d=mp&s=1200"
+                />
               </IconButton>
             </Tooltip>
             <Menu
@@ -149,13 +144,11 @@ function Navbar() {
                   <Typography
                     textAlign="center"
                     onClick={() =>
-                      setting === "Logout"
-                        ? logout()
-                        : setting === "Elect"
+                      setting === "Elect"
                         ? navigate("/elect")
                         : setting === "Favorite"
                         ? navigate("/favorite")
-                        : navigate("/")
+                        : navigate("/profile")
                     }
                   >
                     {setting}
@@ -164,14 +157,31 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <IconButton
-            sx={{ marginLeft: 3, color: "white", fontSize: "18px" }}
-            component={Link}
-            to="/auth"
-          >
-            log In
-          </IconButton>
-          <LiveSearch />
+          {/* // sx={{ marginLeft: 3, color: "white", fontSize: "18px" }}
+            // component={Link}
+            // to="/auth" */}
+          {user ? (
+            <Box display="flex" alignItems="center" px={2} gap={1}>
+              <Typography>{user?.email}</Typography>
+              <Button
+                sx={{ color: "white" }}
+                onClick={logout}
+                className="btn_logout"
+              >
+                Log Out
+              </Button>
+            </Box>
+          ) : (
+            <IconButton
+              component={Link}
+              to="/auth"
+              sx={{ color: "white" }}
+              className="btn_login"
+            >
+              Log in
+              {/* </Button> */}
+            </IconButton>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

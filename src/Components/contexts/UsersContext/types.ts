@@ -1,12 +1,13 @@
 export type usersContextType = {
-  getTotalPageCount: () => void;
   users: user[];
   user: user | null;
-  getUsers: (gender?: string) => void;
   page: number;
   pageTotalCount: number;
+  getUsers: (gender?: string) => void;
+  getTotalPageCount: () => void;
   setPage: (num: number) => void;
   getFilteredUsers: ({ gender }: { gender: string }) => void;
+  AddUser: (newUser: user) => void;
 };
 export type user = {
   id: number;

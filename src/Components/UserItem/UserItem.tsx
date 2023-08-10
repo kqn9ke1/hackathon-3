@@ -18,6 +18,7 @@ import { IFavoritesContextTypes } from "../contexts/FavoritesContext/types";
 import { usersContext } from "../contexts/UsersContext/UsersContext";
 import { electContext } from "../contexts/ElectContext/ElectContext";
 import { IElectContextTypes } from "../contexts/ElectContext/types";
+import TinderCard from "react-tinder-card";
 
 const bull = (
   <Box
@@ -38,61 +39,82 @@ const UserItem: React.FC<propsType> = ({ item }) => {
     React.useContext(favoritesContext) as IFavoritesContextTypes;
   const { addUserToElect, deleteUserFromElect, isAlreadyInElect } =
     React.useContext(electContext) as IElectContextTypes;
+
+  const { users } = React.useContext(usersContext) as usersContextType;
+
+  const [lastDirection, setLastDirection] = React.useState();
+
+  const swiped = (direction: string | any, nameToDelete: string) => {
+    console.log("removing: " + nameToDelete);
+    addUserToFavorites(direction);
+  };
+
+  const outOfFrame = (name: string) => {
+    console.log(name + " left the screen!");
+  };
   return (
     <Container
-      sx={{ display: "flex", justifyContent: "center", maxWidth: "90%" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        maxWidth: "90%",
+      }}
     >
-      <Card sx={{ width: 420 }}>
-        <CardContent>
-          <CardMedia
-            sx={{ height: "200px" }}
-            src={item.image}
-            title={item.name}
-          />
-          <Box display="flex">
-            <Typography variant="h4" gutterBottom sx={{ marginRight: 2 }}>
-              {item.name}
-            </Typography>
-            <Typography variant="h5">{item.age}</Typography>
-          </Box>
-          <Typography variant="h6">
-            {item.description}
-            <br />
-          </Typography>
-          <Typography sx={{ fontSize: 13 }}>{"В 2км от вас"}</Typography>
-        </CardContent>
-        <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-          <Button size="large">
-            <ClearIcon sx={{ width: "50px", height: "50px" }} />
-          </Button>
-          <Button size="large">
-            {isAlreadyInFavorites(item.id) ? (
-              <FavoriteIcon
-                onClick={() => deleteUserFromFavorites(item.id)}
-                sx={{ width: "50px", height: "50px", color: "red" }}
-              />
-            ) : (
-              <FavoriteBorderIcon
-                onClick={() => addUserToFavorites(item)}
-                sx={{ width: "50px", height: "50px", color: "red" }}
-              />
-            )}
-          </Button>
-          <Button size="large">
-            {isAlreadyInElect(item.id) ? (
-              <StarIcon
-                onClick={() => deleteUserFromElect(item.id)}
-                sx={{ width: "50px", height: "50px", color: "yellow" }}
-              />
-            ) : (
-              <StarBorderIcon
-                onClick={() => addUserToElect(item)}
-                sx={{ width: "50px", height: "50px", color: "yellow" }}
-              />
-            )}
-          </Button>
-        </CardActions>
-      </Card>
+      <TinderCard
+        className="swipe"
+        onSwipe={(dir) => swiped(dir, item.name)}
+        onCardLeftScreen={() => outOfFrame(item.name)}
+      >
+        <Card sx={{ width: 420, mb: "20px" }}>
+          <CardContent>
+            <CardMedia
+              component={"img"}
+              src={`${item.image}`}
+              // sx={{
+              //   backgroundImage: "url(" + item.image + ")",
+              //   backgroundSize: "contain",
+              //   backgroundRepeat: "no-repeat",
+              // }}
+              className="card"
+            ></CardMedia>
+            <h2>{item.name}</h2>
+            <div className="swipe_info" style={{ color: "black" }}>
+              {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
+            </div>
+          </CardContent>
+          <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+            <Button size="large">
+              <ClearIcon sx={{ width: "50px", height: "50px" }} />
+            </Button>
+            <Button size="large">
+              {isAlreadyInFavorites(item.id) ? (
+                <FavoriteIcon
+                  onClick={() => deleteUserFromFavorites(item.id)}
+                  sx={{ width: "50px", height: "50px", color: "red" }}
+                />
+              ) : (
+                <FavoriteBorderIcon
+                  onClick={() => addUserToFavorites(item)}
+                  sx={{ width: "50px", height: "50px", color: "red" }}
+                />
+              )}
+            </Button>
+            <Button size="large">
+              {isAlreadyInElect(item.id) ? (
+                <StarIcon
+                  onClick={() => deleteUserFromElect(item.id)}
+                  sx={{ width: "50px", height: "50px", color: "yellow" }}
+                />
+              ) : (
+                <StarBorderIcon
+                  onClick={() => addUserToElect(item)}
+                  sx={{ width: "50px", height: "50px", color: "yellow" }}
+                />
+              )}
+            </Button>
+          </CardActions>
+        </Card>
+      </TinderCard>
     </Container>
   );
 };

@@ -86,6 +86,8 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     getUsers();
   };
 
+  const AddUser = (newUser: user) => {};
+
   const value = {
     users: state.users,
     user: state.user,
@@ -95,6 +97,7 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     setPage,
     getTotalPageCount,
     getFilteredUsers,
+    AddUser,
   };
   return (
     <usersContext.Provider value={value}>{children}</usersContext.Provider>

@@ -1,0 +1,75 @@
+.onboarding {
+  border: solid 1px rgb(216, 216, 216);
+}
+.onboarding h2 {
+  margin: 30px auto 20px;
+  font-size: 32px;
+}
+.onboarding form {
+  display: flex;
+  justify-content: center;
+}
+.onboarding form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 50%;
+  text-align: left !important;
+}
+.onboarding form input {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: solid 2px rgb(220, 220, 220);
+  border-radius: 10px;
+  outline: none;
+}
+#show_gender {
+  align-self: start;
+}
+.onboarding form label {
+  margin: 10px 2px;
+  text-align: start;
+}
+.multiple_input_container {
+  display: flex;
+  flex-direction: row;
+}
+.multiple_input_container input {
+  margin-right: 10px;
+}
+.multiple_input_container label {
+  padding: 10px;
+  border: solid 2px rgb(220, 220, 220);
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-right: 10px;
+}
+.onboarding form input[type="radio"] {
+  display: none;
+}
+.onboarding form input[type="number"] {
+  width: 30%;
+  margin-left: 5px;
+}
+.onboarding form input[type="radio"]:checked + label {
+  border: solid 2px rgb(221, 39, 22);
+}
+.onboarding form input[type="submit"]:hover {
+  background-color: rgb(235, 235, 235);
+}
+.onboarding form input[type="submit"]:active {
+  background-color: rgb(229, 115, 155);
+  color: #fff;
+}
+.photo_container img {
+  width: 100%;
+}
+
+.photo_container_url {
+  display: flex;
+  flex-direction: column;
+}
+#label {
+  margin-top: 29px;
+}

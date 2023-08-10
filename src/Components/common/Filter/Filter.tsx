@@ -42,13 +42,25 @@ export default function Filter({ setGender, gender }: IProps) {
   }, [gender]);
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+      <FormLabel
+        id="demo-radio-buttons-group-label"
+        sx={{ fontSize: "18px", borderBottom: "solid 1px blue" }}
+      >
+        Gender
+      </FormLabel>
       <RadioGroup
+        sx={{ display: "flex", flexDirection: "row" }}
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="all"
         value={gender}
         name="radio-buttons-group"
       >
+        <FormControlLabel
+          onChange={() => setGender("all")}
+          value="all"
+          control={<Radio />}
+          label="All"
+        />
         <FormControlLabel
           onChange={() => setGender("woman")}
           value="woman"
@@ -60,12 +72,6 @@ export default function Filter({ setGender, gender }: IProps) {
           value="man"
           control={<Radio />}
           label="Male"
-        />
-        <FormControlLabel
-          onChange={() => setGender("all")}
-          value="all"
-          control={<Radio />}
-          label="All"
         />
       </RadioGroup>
     </FormControl>
