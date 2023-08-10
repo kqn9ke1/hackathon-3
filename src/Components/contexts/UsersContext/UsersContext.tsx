@@ -4,11 +4,20 @@ import React, {
   FC,
   useReducer,
   useState,
+  useContext,
 } from "react";
 import { API, LIMIT } from "../../../utils/consts";
 import axios from "axios";
-import { allActionType, initSateType, user, usersContextType } from "./types";
+import {
+  allActionType,
+  initSateType,
+  newUser,
+  user,
+  usersContextType,
+} from "./types";
 import { useSearchParams } from "react-router-dom";
+import { authContext } from "../AuthContext/AuthContext";
+import { IAuthContextTypes } from "../AuthContext/types";
 
 export const usersContext = createContext<usersContextType | null>(null);
 
@@ -17,8 +26,9 @@ type usersContextProps = {
 };
 
 const initState: initSateType = {
-  users: [],
+  users: null,
   user: null,
+  emailUser: null,
   pageTotalCount: 1,
 };
 const reducer = (state: initSateType, action: allActionType) => {
@@ -27,6 +37,8 @@ const reducer = (state: initSateType, action: allActionType) => {
       return { ...state, users: action.payload };
     case "user":
       return { ...state, user: action.payload };
+    case "emailUser":
+      return { ...state, emailUser: action.payload };
     case "pageTotalCount":
       return { ...state, pageTotalCount: action.payload };
     default:
@@ -35,58 +47,82 @@ const reducer = (state: initSateType, action: allActionType) => {
 };
 
 const UsersContext: FC<usersContextProps> = ({ children }) => {
+  // const { logout } = useContext(authContext) as IAuthContextTypes;
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(reducer, initState);
   const [page, setPage] = useState<number>(
     +(searchParams.get("_page") as string) || 1
   );
 
-  const getTotalPageCount = async () => {
-    const { data, headers } = await axios.get<user[]>(`${API}`);
-    const count = Math.ceil(data.length / LIMIT);
+  async function getUsers() {
+    const { data, headers } = await axios.get<user[]>(
+      `${API}${window.location.search}`
+    );
+    const count = Math.ceil(headers["x-total-count"] / LIMIT);
+
     dispatch({
       type: "pageTotalCount",
       payload: count,
     });
+    dispatch({
+      type: "users",
+      payload: data,
+    });
+  }
+
+  async function addUser(newUser: newUser) {
+    await axios.post(API, newUser);
+  }
+
+  //функция для удаления юзера
+  const deleteUser = async (id: number) => {
+    await axios.delete(`${API}/${id}`);
+    // logout();
+    getUsers();
   };
 
-  const getUsers = async (gender?: string) => {
-    try {
-      let search = window.location.search;
-      if (gender && gender !== "all") {
-        search += `&gender=${gender}`;
+  async function editUser(newData: user) {
+    await axios.put(`${API}/${newData.id}`, newData);
+  }
+
+  async function getOneUser(id: number) {
+    const { data } = await axios.get<user>(`${API}/${id}`);
+    dispatch({
+      type: "user",
+      payload: data,
+    });
+  }
+  async function getEmailUser(email: string) {
+    const { data } = await axios.get<user[]>(`${API}`);
+    const [emailUser] = data.filter((item) => {
+      if (item.email === email) {
+        return item;
       }
-      const { data, headers } = await axios.get<user[]>(`${API}${search}`);
-      const countPage = headers["x-total-count"] ?? 0;
-      dispatch({
-        type: "users",
-        payload: data,
-      });
-      dispatch({
-        type: "pageTotalCount",
-        payload: Math.ceil(countPage / LIMIT),
-      });
-      // console.log(state);
-    } catch (error) {
-      console.log(error, "error getUsers");
-    }
-  };
+    });
+
+    dispatch({
+      type: "emailUser",
+      payload: emailUser,
+    });
+  }
 
   const getFilteredUsers = async ({ gender }: { gender: string }) => {
-    let { data, headers } = await axios.get<user[]>(`${API}`);
+    let { data } = await axios.get<user[]>(`${API}`);
     const users = data.filter((obj: user) => obj.gender === gender);
     dispatch({
       type: "users",
       payload: [...users],
     });
   };
-  //функция для удаления юзера
-  const deleteUser = async (id: number) => {
-    await axios.delete(`${API}/${id}`);
-    getUsers();
-  };
 
-  const AddUser = (newUser: user) => {};
+  const getTotalPageCount = async () => {
+    const { data } = await axios.get<user[]>(`${API}`);
+    const count = Math.ceil(data.length / LIMIT);
+    dispatch({
+      type: "pageTotalCount",
+      payload: count,
+    });
+  };
 
   const value = {
     users: state.users,
@@ -97,7 +133,12 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     setPage,
     getTotalPageCount,
     getFilteredUsers,
-    AddUser,
+    addUser,
+    deleteUser,
+    editUser,
+    getOneUser,
+    getEmailUser,
+    emailUser: state.emailUser,
   };
   return (
     <usersContext.Provider value={value}>{children}</usersContext.Provider>

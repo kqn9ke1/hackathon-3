@@ -5,9 +5,10 @@ import { LIMIT } from "../../../utils/consts";
 import { usersContextType } from "../../contexts/UsersContext/types";
 import { usersContext } from "../../contexts/UsersContext/UsersContext";
 
-const Pagination = ({ gender }: { gender: string }) => {
-  const { page, setPage, getUsers, pageTotalCount, getTotalPageCount } =
-    useContext(usersContext) as usersContextType;
+const Pagination = () => {
+  const { page, setPage, getUsers, pageTotalCount } = useContext(
+    usersContext
+  ) as usersContextType;
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -18,7 +19,7 @@ const Pagination = ({ gender }: { gender: string }) => {
       _page: page.toString(),
       _limit: LIMIT.toString(),
     });
-    getUsers(gender);
+    getUsers();
   }, [page]);
   return (
     <MuiPagination

@@ -8,16 +8,19 @@ import { useSearchParams } from "react-router-dom";
 import { usersContext } from "../../contexts/UsersContext/UsersContext";
 import { usersContextType } from "../../contexts/UsersContext/types";
 
-interface IProps {
-  setGender: (gender: string) => void;
-  gender: string;
-}
+// interface IProps {
+//   setGender: (gender: string) => void;
+//   gender: string;
+// { setGender, gender }: IProps}
 
-export default function Filter({ setGender, gender }: IProps) {
+export default function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const { setPage } = React.useContext(usersContext) as usersContextType;
-
+  const [gender, setGender] = React.useState(
+    searchParams.get("gender") || "all"
+  );
+  const { setPage, getUsers } = React.useContext(
+    usersContext
+  ) as usersContextType;
   const [firstMount, setFirstMount] = React.useState(true);
 
   React.useEffect(() => {
@@ -38,6 +41,7 @@ export default function Filter({ setGender, gender }: IProps) {
         gender,
       });
     }
+    getUsers();
     setPage(1);
   }, [gender]);
   return (
@@ -77,48 +81,3 @@ export default function Filter({ setGender, gender }: IProps) {
     </FormControl>
   );
 }
-
-// const Filter = () => {
-//   const [searchParams, setSearchParams] = useSearchParams();
-//   const [gender, setGender] = useState(searchParams.get("gender") || "all");
-
-//   const { setPage } = useContext(usersContext) as usersContextType;
-
-//   const [firstMount, setFirstMount] = useState(true);
-
-//   useEffect(() => {
-//     if (firstMount) {
-//       setFirstMount(false);
-//       return;
-//     }
-//     const currentParams = Object.fromEntries([...searchParams]);
-
-//     if (gender === "all") {
-//       delete currentParams.gender;
-//       setSearchParams({
-//         ...currentParams,
-//       });
-//     } else {
-//       setSearchParams({
-//         ...currentParams,
-//         gender,
-//       });
-//     }
-//     setPage(1);
-//   }, [gender]);
-
-//   return (
-//     <ToggleButtonGroup
-//       color="primary"
-//       value={gender}
-//       exclusive
-//       onChange={(_, value) => value && setGender(value)}
-//       aria-label="Platform"
-//     >
-//       <ToggleButton value="all">All</ToggleButton>
-//       <ToggleButton value="pants">Gender</ToggleButton>
-//     </ToggleButtonGroup>
-//   );
-// };
-
-// export default Filter;
