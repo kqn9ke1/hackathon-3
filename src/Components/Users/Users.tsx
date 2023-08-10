@@ -4,16 +4,11 @@ import { usersContextType } from "../contexts/UsersContext/types";
 import UserItem from "../UserItem/UserItem";
 
 const Users = () => {
-  const { users, getUsers } = useContext(usersContext) as usersContextType;
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-  console.log(users);
+  const { users } = useContext(usersContext) as usersContextType;
 
   return (
     <div>
-      {users.map((item) => (
+      {users?.map((item) => (
         <>
           <UserItem key={item.id} item={item} />
         </>

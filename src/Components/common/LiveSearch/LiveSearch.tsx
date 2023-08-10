@@ -9,14 +9,14 @@ const LiveSearch = () => {
   const [searchVal, setSearchVal] = useState<string>(
     searchParams.get("q") || ""
   );
-  const { setPage } = useContext(usersContext) as usersContextType;
+  const { setPage, getUsers } = useContext(usersContext) as usersContextType;
 
   const [firstMount, setFirstMount] = useState(true);
   useEffect(() => {
-    // if (firstMount) {
-    //   setFirstMount(false);
-    //   return;
-    // }
+    if (firstMount) {
+      setFirstMount(false);
+      return;
+    }
     const currentParams = Object.fromEntries([...searchParams]);
 
     setSearchParams({
@@ -24,11 +24,11 @@ const LiveSearch = () => {
       q: searchVal,
     });
     setPage(1);
+    getUsers();
   }, [searchVal]);
-
   return (
     <input
-      type="search"
+      type="text"
       value={searchVal}
       onChange={(e) => setSearchVal(e.target.value)}
       placeholder="Search…"

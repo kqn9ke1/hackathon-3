@@ -8,20 +8,19 @@ import { usersContextType } from "../Components/contexts/UsersContext/types";
 
 const UsersPage = () => {
   const { getUsers } = useContext(usersContext) as usersContextType;
-  const [gender, setGender] = useState<string>("all");
 
   useEffect(() => {
-    getUsers(gender);
-  }, [gender]);
+    getUsers();
+  }, []);
 
   return (
     <div>
       <Box sx={{ maxWidth: "max-content", margin: "30px auto" }}>
-        <Filter setGender={setGender} gender={gender} />
+        <Filter />
       </Box>
       <Users />
       <Box sx={{ maxWidth: "max-content", margin: "30px auto" }}>
-        <Pagination gender={gender} />
+        <Pagination />
       </Box>
     </div>
   );
