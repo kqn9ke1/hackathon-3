@@ -4,7 +4,6 @@ import React, {
   FC,
   useReducer,
   useState,
-  useContext,
 } from "react";
 import { API, LIMIT } from "../../../utils/consts";
 import axios from "axios";
@@ -26,7 +25,6 @@ type usersContextProps = {
 const initState: initSateType = {
   users: null,
   user: null,
-  emailUser: null,
   pageTotalCount: 1,
 };
 const reducer = (state: initSateType, action: allActionType) => {
@@ -35,8 +33,6 @@ const reducer = (state: initSateType, action: allActionType) => {
       return { ...state, users: action.payload };
     case "user":
       return { ...state, user: action.payload };
-    case "emailUser":
-      return { ...state, emailUser: action.payload };
     case "pageTotalCount":
       return { ...state, pageTotalCount: action.payload };
     default:
@@ -45,7 +41,6 @@ const reducer = (state: initSateType, action: allActionType) => {
 };
 
 const UsersContext: FC<usersContextProps> = ({ children }) => {
-  // const { logout } = useContext(authContext) as IAuthContextTypes;
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(reducer, initState);
   const [page, setPage] = useState<number>(
@@ -72,10 +67,8 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     await axios.post(API, newUser);
   }
 
-  //функция для удаления юзера
   const deleteUser = async (id: number) => {
     await axios.delete(`${API}/${id}`);
-    // logout();
     getUsers();
   };
 
@@ -88,19 +81,6 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     dispatch({
       type: "user",
       payload: data,
-    });
-  }
-  async function getEmailUser(email: string) {
-    const { data } = await axios.get<user[]>(`${API}`);
-    const [emailUser] = data.filter((item) => {
-      if (item.email === email) {
-        return item;
-      }
-    });
-
-    dispatch({
-      type: "emailUser",
-      payload: emailUser,
     });
   }
 
@@ -127,7 +107,6 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     user: state.user,
     page,
     pageTotalCount: state.pageTotalCount,
-    emailUser: state.emailUser,
     getUsers,
     setPage,
     getTotalPageCount,
@@ -136,7 +115,6 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     deleteUser,
     editUser,
     getOneUser,
-    getEmailUser,
   };
   return (
     <usersContext.Provider value={value}>{children}</usersContext.Provider>

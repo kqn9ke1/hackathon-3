@@ -10,5 +10,4 @@ export interface IFavoritesContextTypes {
   addUserToFavorites: (user: user) => void;
   deleteUserFromFavorites: (id: number) => void;
   isAlreadyInFavorites: (id: number) => boolean;
-  clearFavorites: () => void;
 }

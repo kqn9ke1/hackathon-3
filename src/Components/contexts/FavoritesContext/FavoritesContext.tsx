@@ -58,18 +58,12 @@ const FavoritesContext: FC<IFavoritesContextProps> = ({ children }) => {
     const isInFavorites = data.users.some((item) => item.id === id);
     return isInFavorites;
   }
-
-  function clearFavorites() {
-    localStorage.removeItem("Favorites");
-    getFavorites();
-  }
   const value = {
     favorites,
     getFavorites,
     addUserToFavorites,
     deleteUserFromFavorites,
     isAlreadyInFavorites,
-    clearFavorites,
   };
   return (
     <favoritesContext.Provider value={value}>

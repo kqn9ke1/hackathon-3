@@ -20,7 +20,7 @@
       "age": 20,
       "gender": "man",
       "description": "Если вы приедете на свидание не такая как на фото, мы будем пить пока не изменитесь",
-      "email": "a1tywa.@gmail.com",
+      "email": "sanjik.@gmail.com",
       "hobbies": [
         "fishing",
         " cycling"
@@ -34,7 +34,7 @@
       "age": 17,
       "gender": "man",
       "description": "Я – тот, кто будет целовать тебя под дождем",
-      "email": "a1tywa.@gmail.com",
+      "email": "baish.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -47,7 +47,7 @@
       "age": 22,
       "gender": "woman",
       "description": "Я королева своего маленького мира",
-      "email": "a1tywa.@gmail.com",
+      "email": "aigerim.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -60,7 +60,20 @@
       "age": 20,
       "gender": "woman",
       "description": "Верю в настоящую любовь. Не разубеждайте.",
-      "email": "a1tywa.@gmail.com",
+      "email": "kanykei.@gmail.com",
+      "hobbies": [
+        "nkck jdsn, scd"
+      ],
+      "show_gender": true
+    },
+    {
+      "id": 6,
+      "name": "Bayana",
+      "image": "https://www.lofficielbaltic.com/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F59774%2F1645040446-1636550068821715-2021-lachlan-bailey-3-gthumb-g-5557-2521-1635526891.jpg%3Fauto%3Dformat%252Ccompress%26cs%3Dsrgb&w=3840&q=75",
+      "age": 25,
+      "gender": "woman",
+      "description": "Ее улыбка была как доспехи, и каждый день она шла на войну",
+      "email": "sbayana125@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -73,7 +86,7 @@
       "age": 27,
       "gender": "man",
       "description": "Она была радуга, а он дальтоник",
-      "email": "a1tywa.@gmail.com",
+      "email": "daniyar.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -86,7 +99,7 @@
       "age": 16,
       "gender": "woman",
       "description": "Не позволяйте никому арендовать место в вашей голове, если он не хороший арендатор",
-      "email": "a1tywa.@gmail.com",
+      "email": "cholpon.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -99,7 +112,7 @@
       "age": 28,
       "gender": "man",
       "description": "Лучше свайпнуть меня сейчас, чем через 5 лет придти на программу к Гузеевой в поисках такого как я",
-      "email": "a1tywa.@gmail.com",
+      "email": "aibek.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -112,7 +125,7 @@
       "age": 20,
       "gender": "man",
       "description": "Я слишком хорош, чтобы быть одиноким.",
-      "email": "a1tywa.@gmail.com",
+      "email": "shabdan.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -125,7 +138,7 @@
       "age": 23,
       "gender": "man",
       "description": "C нами ты станешь программистом!",
-      "email": "a1tywa.@gmail.com",
+      "email": "sultan.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -138,7 +151,7 @@
       "age": 20,
       "gender": "man",
       "description": "Сожгу свое сердце на алтаре твоей любви.",
-      "email": "a1tywa.@gmail.com",
+      "email": "ilya.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -151,7 +164,7 @@
       "age": 27,
       "gender": "man",
       "description": "Иногда бываю старомоден. Целую руки, дарю цветы и верю в романтику.",
-      "email": "a1tywa.@gmail.com",
+      "email": "pulatbek.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -164,7 +177,7 @@
       "age": 28,
       "gender": "man",
       "description": "Мне нужен кто-то, кто будет смотреть на меня так же, как я смотрю на шоколадный торт",
-      "email": "a1tywa.@gmail.com",
+      "email": "bekbolot.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -177,7 +190,7 @@
       "age": 20,
       "gender": "man",
       "description": "С прекрасной девушкой приходят большие расходы",
-      "email": "a1tywa.@gmail.com",
+      "email": "marat.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -190,7 +203,7 @@
       "age": 20,
       "gender": "woman",
       "description": "Если мужчина свистит вам, не отвечайте. Вы дама, а не собака.",
-      "email": "a1tywa.@gmail.com",
+      "email": "ayana.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -203,7 +216,7 @@
       "age": 23,
       "gender": "woman",
       "description": "Девочки похожи на абстрактную живопись. Даже если вы не можете их понять, они все равно прекрасны",
-      "email": "a1tywa.@gmail.com",
+      "email": "baktygul.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -216,7 +229,7 @@
       "age": 20,
       "gender": "woman",
       "description": "В мире, полном банальностей, я хочу оставаться классиком",
-      "email": "a1tywa.@gmail.com",
+      "email": "karina.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -229,7 +242,7 @@
       "age": 20,
       "gender": "woman",
       "description": "Если у тебя нет улыбки, я подарю тебе одну из своих …!",
-      "email": "a1tywa.@gmail.com",
+      "email": "mira.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -242,7 +255,7 @@
       "age": 23,
       "gender": "man",
       "description": "Улыбка — это самый красивый изгиб женского тела",
-      "email": "a1tywa.@gmail.com",
+      "email": "whytdan.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -255,7 +268,7 @@
       "age": 18,
       "gender": "man",
       "description": "на свиданиях чувствую себя как рыба в воде, постоянно молчу и лицо тупое",
-      "email": "a1tywa.@gmail.com",
+      "email": "asylbek.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -268,7 +281,7 @@
       "age": 20,
       "gender": "man",
       "description": "Я – тот, кто будет целовать тебя под дождем…",
-      "email": "a1tywa.@gmail.com",
+      "email": "abbas.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
@@ -281,69 +294,25 @@
       "age": 25,
       "gender": "man",
       "description": "Ищу хорошее настроение. У кого есть, пишите.",
-      "email": "a1tywa.@gmail.com",
+      "email": "adilet.@gmail.com",
       "hobbies": [
         "nkck jdsn, scd"
       ],
       "show_gender": true
     },
     {
-      "name": "qazwsx",
-      "description": "nice",
-      "age": 23,
-      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/i1-7e3c41c5-2dff-4fbf-a39a-4c60d4c0e27a/dri-fit-training-t-shirt-LR2z2m.png",
+      "name": "ijnk",
+      "description": "fgjbknkml/;,",
+      "age": 15,
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAB7CAMAAAAfU9HRAAAAFVBMVEX///8AJlTOESYAEUp1fJDdd3zMABFXDawmAAAAeUlEQVR4nO3OSQEAIAADoHn2j2yIPYUEZBTWTuPcWYi5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ufmX8wfrgV8jP5GHWwAAAABJRU5ErkJggg==",
       "hobbies": [
-        "sport",
-        " dance",
-        "coding"
+        "ad",
+        " ads"
       ],
       "show_gender": false,
-      "gender": "Man",
+      "gender": "Woman",
       "email": "",
       "id": 23
-    },
-    {
-      "name": "bayana",
-      "description": "hhjh",
-      "age": 20,
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAB7CAMAAAAfU9HRAAAAFVBMVEX///8AJlTOESYAEUp1fJDdd3zMABFXDawmAAAAeUlEQVR4nO3OSQEAIAADoHn2j2yIPYUEZBTWTuPcWYi5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ufmX8wfrgV8jP5GHWwAAAABJRU5ErkJggg==",
-      "hobbies": [
-        "gvgh",
-        " ghj",
-        "h"
-      ],
-      "show_gender": false,
-      "gender": "Woman",
-      "email": "",
-      "id": 24
-    },
-    {
-      "name": "Bayana",
-      "description": "ofjd;irvjwi;kvhnkj vhruivhlr owrhri;v looiojhvwrhv;ishvn ihvuigvhkvnrlv iheiukgbvrljvb  kjhbvrjsvbjv  jksbvkjbj",
-      "age": 25,
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAB7CAMAAAAfU9HRAAAAFVBMVEX///8AJlTOESYAEUp1fJDdd3zMABFXDawmAAAAeUlEQVR4nO3OSQEAIAADoHn2j2yIPYUEZBTWTuPcWYi5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ufmX8wfrgV8jP5GHWwAAAABJRU5ErkJggg==",
-      "hobbies": [
-        "vjkbgvusdvjbvjs"
-      ],
-      "show_gender": false,
-      "gender": "Woman",
-      "email": "sbayana125@gmail.com",
-      "id": 25
-    },
-    {
-      "name": "Bayana",
-      "description": "ofjd;irvjwi;kvhnkj vhruivhlr owrhri;v looiojhvwrhv;ishvn ihvuigvhkvnrlv iheiukgbvrljvb  kjhbvrjsvbjv  jksbvkjbj",
-      "age": 24,
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAB7CAMAAAAfU9HRAAAAFVBMVEX///8AJlTOESYAEUp1fJDdd3zMABFXDawmAAAAeUlEQVR4nO3OSQEAIAADoHn2j2yIPYUEZBTWTuPcWYi5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ufmX8wfrgV8jP5GHWwAAAABJRU5ErkJggg==",
-      "hobbies": [
-        "gvgh",
-        " ghj",
-        "h"
-      ],
-      "show_gender": false,
-      "gender": "Woman",
-      "email": "",
-      "id": 26
     }
   ]
 }

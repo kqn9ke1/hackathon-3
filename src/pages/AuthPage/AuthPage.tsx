@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { authContext } from "../../Components/contexts/AuthContext/AuthContext";
 import {
   IAuthContextTypes,
@@ -16,8 +16,8 @@ const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          padding: 0, // Замените на нужное значение
-          margin: 0, // Замените на нужное значение
+          padding: 0,
+          margin: 0,
         },
       },
     },
@@ -30,7 +30,13 @@ const AuthPage = () => {
   const { login, register, user } = React.useContext(
     authContext
   ) as IAuthContextTypes;
-  const { users } = React.useContext(usersContext) as usersContextType;
+  const { users, getUsers } = React.useContext(
+    usersContext
+  ) as usersContextType;
+
+  useEffect(() => {
+    getUsers();
+  }, []);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,13 +52,16 @@ const AuthPage = () => {
       register(credentials);
     }
 
+    let flag = false;
     users?.forEach((item) => {
       if (item.email === credentials.email) {
-        navigate("/add");
-      } else {
-        navigate("/auth");
+        flag = true;
       }
     });
+
+    if (flag) {
+      navigate("/users");
+    }
   };
 
   if (user) {
