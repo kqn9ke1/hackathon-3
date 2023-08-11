@@ -18,20 +18,22 @@ export type user = {
   id: number;
   name: string;
   age: number;
+  show_gender: boolean;
+  gender: string;
   image: string;
   description: string;
   hobbies: string[];
-  gender: string;
   email: string;
 };
 export interface newUser {
   name: string;
   age: number;
-  image: string;
-  hobbies: string[];
-  description: string;
-  email: string;
+  show_gender: boolean;
   gender: string;
+  image: string;
+  description: string;
+  hobbies: string[];
+  email: string;
 }
 
 export type initSateType = {

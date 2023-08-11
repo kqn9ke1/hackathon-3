@@ -16,8 +16,6 @@ import {
   usersContextType,
 } from "./types";
 import { useSearchParams } from "react-router-dom";
-import { authContext } from "../AuthContext/AuthContext";
-import { IAuthContextTypes } from "../AuthContext/types";
 
 export const usersContext = createContext<usersContextType | null>(null);
 
@@ -127,9 +125,10 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
   const value = {
     users: state.users,
     user: state.user,
-    getUsers,
     page,
     pageTotalCount: state.pageTotalCount,
+    emailUser: state.emailUser,
+    getUsers,
     setPage,
     getTotalPageCount,
     getFilteredUsers,
@@ -138,7 +137,6 @@ const UsersContext: FC<usersContextProps> = ({ children }) => {
     editUser,
     getOneUser,
     getEmailUser,
-    emailUser: state.emailUser,
   };
   return (
     <usersContext.Provider value={value}>{children}</usersContext.Provider>

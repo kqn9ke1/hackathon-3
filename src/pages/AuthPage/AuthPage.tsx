@@ -48,9 +48,9 @@ const AuthPage = () => {
 
     users?.forEach((item) => {
       if (item.email === credentials.email) {
-        navigate("/users");
-      } else {
         navigate("/add");
+      } else {
+        navigate("/auth");
       }
     });
   };

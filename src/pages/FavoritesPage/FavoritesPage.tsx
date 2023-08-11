@@ -1,13 +1,30 @@
 import React, { useContext, useEffect } from "react";
-import UserItem from "../../Components/UserItem/UserItem";
 import { Link } from "react-router-dom";
 import { favoritesContext } from "../../Components/contexts/FavoritesContext/FavoritesContext";
 import { IFavoritesContextTypes } from "../../Components/contexts/FavoritesContext/types";
-import { Box, CardMedia, IconButton, Typography } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import InfoIcon from "@mui/icons-material/Info";
+
+import {
+  Box,
+  CardMedia,
+  IconButton,
+  Typography,
+  Container,
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+} from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import "../FavoritesPage/styles.css";
 
 const FavoritesPage = () => {
+  const { addUserToFavorites, deleteUserFromFavorites, isAlreadyInFavorites } =
+    React.useContext(favoritesContext) as IFavoritesContextTypes;
+  const [lastDirection, setLastDirection] = React.useState();
+
   const { getFavorites, favorites } = useContext(
     favoritesContext
   ) as IFavoritesContextTypes;
@@ -57,7 +74,55 @@ const FavoritesPage = () => {
   return (
     <>
       {favorites.users?.map((item) => (
-        <UserItem key={item.id} item={item} />
+        <Container
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            maxWidth: "90%",
+          }}
+        >
+          <Card sx={{ width: 420, mb: "20px", position: "absolute" }}>
+            <CardContent>
+              <CardMedia
+                component={"img"}
+                src={`${item.image}`}
+                className="card"
+              ></CardMedia>
+              <h2>{item.name}</h2>
+            </CardContent>
+            <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+              <Button size="large">
+                {isAlreadyInFavorites(item.id) ? (
+                  <FavoriteIcon
+                    onClick={() => deleteUserFromFavorites(item.id)}
+                    sx={{ width: "50px", height: "50px", color: "red" }}
+                  />
+                ) : (
+                  <FavoriteBorderIcon
+                    onClick={() => addUserToFavorites(item)}
+                    sx={{ width: "50px", height: "50px", color: "red" }}
+                  />
+                )}
+              </Button>
+              {/* <Button size="large">
+                {isAlreadyInElect(item.id) ? (
+                  <StarIcon
+                    onClick={() => deleteUserFromElect(item.id)}
+                    sx={{ width: "50px", height: "50px", color: "yellow" }}
+                  />
+                ) : (
+                  <StarBorderIcon
+                    onClick={() => addUserToElect(item)}
+                    sx={{ width: "50px", height: "50px", color: "yellow" }}
+                  />
+                )}
+              </Button> */}
+              <Button size="large">
+                <InfoIcon sx={{ width: "50px", height: "50px" }} />
+              </Button>
+            </CardActions>
+          </Card>
+        </Container>
       ))}
     </>
   );

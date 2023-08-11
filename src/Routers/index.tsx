@@ -9,18 +9,22 @@ import ElectPage from "../pages/ElectPage/ElectPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import EditUserPage from "../pages/EditUserPage/EditUserPage";
 import AddUserPage from "../pages/AddUserPage/AddUserPage";
+import DetailPage from "../pages/DetailPage/DetailPage";
+import SecondLayout from "../layouts/SecondLayout";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route element={<BaseLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/users" element={<UsersPage />} />
+        <Route element={<SecondLayout />}>
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/favorite" element={<FavoritesPage />} />
+          <Route path="/elect" element={<ElectPage />} />
+        </Route>
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/auth" element={<AuthPage />} />
         <Route path="/edit/:id" element={<EditUserPage />} />
-        <Route path="/favorite" element={<FavoritesPage />} />
-        <Route path="/elect" element={<ElectPage />} />
+        <Route path="/details/:id" element={<DetailPage />} />
       </Route>
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/add" element={<AddUserPage />} />
