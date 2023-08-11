@@ -44,9 +44,9 @@ const UserItem: React.FC<propsType> = ({ item }) => {
     usersContext
   ) as usersContextType;
 
-  console.log(item);
+  // console.log(item);
 
-  console.log(users);
+  // console.log(users);
 
   const [lastDirection, setLastDirection] = React.useState();
 
@@ -116,7 +116,7 @@ const UserItem: React.FC<propsType> = ({ item }) => {
                 />
               )}
             </Button>
-            <Button size="large" component={Link} to="/details/:id">
+            <Button size="large" component={Link} to={`/details/${item.id}`}>
               <InfoIcon sx={{ width: "50px", height: "50px" }} />
             </Button>
           </CardActions>

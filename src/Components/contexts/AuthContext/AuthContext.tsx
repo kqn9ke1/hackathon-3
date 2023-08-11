@@ -15,6 +15,7 @@ import {
 import { auth } from "../../../firebase";
 import { ADMINS } from "../../../utils/consts";
 import { TUser } from "./types";
+import { useNavigate } from "react-router-dom";
 
 interface IAuthContextTypes {
   user: TUser;
@@ -36,7 +37,7 @@ interface IAuthContextProps {
 
 const AuthContext: FC<IAuthContextProps> = ({ children }) => {
   const [user, setUser] = useState<TUser>(null);
-
+  const navigate = useNavigate();
   async function register({ email, password }: IUserCredentials) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -55,6 +56,7 @@ const AuthContext: FC<IAuthContextProps> = ({ children }) => {
   async function logout() {
     try {
       await signOut(auth);
+      navigate("/auth");
     } catch (e: any) {
       alert(e.code);
     }

@@ -22,10 +22,10 @@ const AppRoutes = () => {
           <Route path="/favorite" element={<FavoritesPage />} />
           <Route path="/elect" element={<ElectPage />} />
         </Route>
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/edit/:id" element={<EditUserPage />} />
-        <Route path="/details/:id" element={<DetailPage />} />
       </Route>
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/edit/:id" element={<EditUserPage />} />
+      <Route path="/details/:id" element={<DetailPage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/add" element={<AddUserPage />} />
     </Routes>
