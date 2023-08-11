@@ -1,0 +1,17 @@
+@media screen and(max-width:667px) {
+  .container_detailsPage {
+    background: linear-gradient(
+      45deg,
+      rgba(195, 34, 186, 1) 11%,
+      rgba(45, 172, 253, 1) 91%
+    );
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+  }
+  .btn_to_back {
+    text-align: center;
+    padding-bottom: 20px;
+    color: black;
+  }
+}

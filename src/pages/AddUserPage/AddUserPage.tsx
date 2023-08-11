@@ -69,7 +69,7 @@ const AddUserPage = () => {
         <h2>Create Account</h2>
         <form onSubmit={handleSubmit}>
           <section>
-            <label htmlFor="first_name">First Name</label>
+            <label htmlFor="name">First Name</label>
             <input
               type="text"
               id="name"
@@ -78,6 +78,16 @@ const AddUserPage = () => {
               required={true}
               value={name}
               onChange={(e) => setName(e.target.value)}
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required={true}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label>Age</label>
 

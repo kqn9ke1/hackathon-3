@@ -1,0 +1,56 @@
+@media screen and (max-width: 426px) {
+  #profile_container {
+    display: block;
+  }
+
+  #prof_btn {
+    font-size: 16px;
+    /* margin: 60px 2px 10px; */
+    padding: 4px 15px;
+  }
+
+  #prof_btn_del {
+    font-size: 17px;
+    /* margin: 60px 2px 10px; */
+    padding: 4px 15px;
+  }
+}
+@media screen and (max-width: 656px) {
+  #profile_container {
+    display: block;
+  }
+}
+.info_con p {
+  margin-top: 10px;
+}
+.info_con {
+  margin: 20px;
+}
+.butons {
+  display: flex;
+}
+#prof_btn {
+  font-size: 20px;
+  /* padding: 8px 20px; */
+  border-radius: 10px;
+  margin-right: 4px;
+  border: none;
+  background: linear-gradient(45deg, rgb(255 52 86), rgb(255 96 81));
+  color: white;
+}
+#prof_btn_del {
+  font-size: 20px;
+  /* padding: 8px 20px; */
+  border-radius: 10px;
+  border: solid 1px rgb(255 52 86);
+  color: black;
+}
+#prof_btn:hover {
+  background: linear-gradient(45deg, rgb(255 96 81), rgb(255 52 86));
+}
+.btn_to_back {
+  text-align: end !important;
+}
+.btn_to_back:hover {
+  color: rgb(212, 212, 212);
+}
