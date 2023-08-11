@@ -17,17 +17,13 @@ import { IAuthContextTypes } from "../../contexts/AuthContext/types";
 import { CardMedia } from "@mui/material";
 import { Button } from "semantic-ui-react";
 import "../Navbar/Navbar.css";
-import { useState } from "react";
-import LiveSearch from "../LiveSearch/LiveSearch";
 
 const settings = ["Profile", "Elect", "Favorite"];
 
 function Navbar() {
-  const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
-  const { logout, login, user } = React.useContext(
-    authContext
-  ) as IAuthContextTypes;
+  const { logout, user } = React.useContext(authContext) as IAuthContextTypes;
+  // const { user } = React.useContext(usersContext) as usersContextType;
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -53,44 +49,14 @@ function Navbar() {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
-        background: "linear-gradient(45deg,rgb(255 52 86), rgb(255 96 81))",
-        boxShadow: "0 0px 10px 0px rgba(0, 0, 0, 0.167)",
+        background:
+          "linear-gradient(45deg, rgb(255, 34, 126), rgb(254, 172, 109))",
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            ></Menu>
-          </Box>
           <Box
             component={Link}
             to="/"
@@ -116,7 +82,10 @@ function Navbar() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0, margin: "4px" }}
+              >
                 <Avatar
                   alt="Remy Sharp"
                   src="https://secure.gravatar.com/avatar/33dbb14aede9bc48aa232b1d52faef54.jpg?d=mp&s=1200"
@@ -172,15 +141,14 @@ function Navbar() {
               </Button>
             </Box>
           ) : (
-            <IconButton
-              component={Link}
-              to="/auth"
-              sx={{ color: "white" }}
+            <Button
+              component={"a"}
+              href="/auth"
+              sx={{ color: "rgb(255, 34, 126)" }}
               className="btn_login"
             >
               Log in
-              {/* </Button> */}
-            </IconButton>
+            </Button>
           )}
         </Toolbar>
       </Container>

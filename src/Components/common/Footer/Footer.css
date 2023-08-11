@@ -1,0 +1,15 @@
+.footer_con {
+  width: 70%;
+  margin: auto;
+  padding: 30px 0;
+  border-top: solid 1px white;
+}
+
+.footer_con ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+.footer_con li img {
+  width: 30px;
+}

@@ -48,7 +48,11 @@ export default function Filter() {
     <FormControl>
       <FormLabel
         id="demo-radio-buttons-group-label"
-        sx={{ fontSize: "18px", borderBottom: "solid 1px blue" }}
+        sx={{
+          fontSize: "18px",
+          borderBottom: "solid 1px blue",
+          color: "darkblue",
+        }}
       >
         Gender
       </FormLabel>

@@ -4,21 +4,20 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { user, usersContextType } from "../contexts/UsersContext/types";
 import { CardMedia, Container } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ClearIcon from "@mui/icons-material/Clear";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
-import { CardSwiper } from "react-card-rotate-swiper";
+import InfoIcon from "@mui/icons-material/Info";
 import { favoritesContext } from "../contexts/FavoritesContext/FavoritesContext";
 import { IFavoritesContextTypes } from "../contexts/FavoritesContext/types";
 import { usersContext } from "../contexts/UsersContext/UsersContext";
 import { electContext } from "../contexts/ElectContext/ElectContext";
 import { IElectContextTypes } from "../contexts/ElectContext/types";
 import TinderCard from "react-tinder-card";
+import { Link } from "react-router-dom";
 
 const bull = (
   <Box
@@ -37,10 +36,17 @@ const UserItem: React.FC<propsType> = ({ item }) => {
   // const { deleteUser } = React.useContext(usersContext) as usersContextType;
   const { addUserToFavorites, deleteUserFromFavorites, isAlreadyInFavorites } =
     React.useContext(favoritesContext) as IFavoritesContextTypes;
+
   const { addUserToElect, deleteUserFromElect, isAlreadyInElect } =
     React.useContext(electContext) as IElectContextTypes;
 
-  const { users } = React.useContext(usersContext) as usersContextType;
+  const { users, getUsers } = React.useContext(
+    usersContext
+  ) as usersContextType;
+
+  console.log(item);
+
+  console.log(users);
 
   const [lastDirection, setLastDirection] = React.useState();
 
@@ -65,7 +71,7 @@ const UserItem: React.FC<propsType> = ({ item }) => {
         onSwipe={(dir) => swiped(dir, item.name)}
         onCardLeftScreen={() => outOfFrame(item.name)}
       >
-        <Card sx={{ width: 420, mb: "20px" }}>
+        <Card sx={{ width: 420, mb: "20px", position: "absolute" }}>
           <CardContent>
             <CardMedia
               component={"img"}
@@ -78,14 +84,12 @@ const UserItem: React.FC<propsType> = ({ item }) => {
               className="card"
             ></CardMedia>
             <h2>{item.name}</h2>
+
             <div className="swipe_info" style={{ color: "black" }}>
               {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
             </div>
           </CardContent>
           <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-            <Button size="large">
-              <ClearIcon sx={{ width: "50px", height: "50px" }} />
-            </Button>
             <Button size="large">
               {isAlreadyInFavorites(item.id) ? (
                 <FavoriteIcon
@@ -111,6 +115,9 @@ const UserItem: React.FC<propsType> = ({ item }) => {
                   sx={{ width: "50px", height: "50px", color: "yellow" }}
                 />
               )}
+            </Button>
+            <Button size="large" component={Link} to="/details/:id">
+              <InfoIcon sx={{ width: "50px", height: "50px" }} />
             </Button>
           </CardActions>
         </Card>

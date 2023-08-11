@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { usersContext } from "../../Components/contexts/UsersContext/UsersContext";
 import { usersContextType } from "../../Components/contexts/UsersContext/types";
-import { useNavigate, useParams } from "react-router-dom";
 
 const EditUserPage = () => {
   const { user, getOneUser, editUser } = useContext(
@@ -15,12 +15,13 @@ const EditUserPage = () => {
   const [formValue, setFormValue] = useState({
     id: 1,
     name: "",
-    description: "",
     age: "",
+    show_gender: false,
+    gender: "man",
     image: "",
-    email: "",
+    description: "",
     hobbies: "",
-    gender: "",
+    email: "",
   });
 
   useEffect(() => {
@@ -78,36 +79,42 @@ const EditUserPage = () => {
       <h1>EDIT</h1>
       <form action="">
         <input
+          placeholder="name"
           type="text"
           name="name"
           value={formValue.name}
           onChange={handleChange}
         />
         <input
+          placeholder="image"
           type="text"
           name="image"
           value={formValue.image}
           onChange={handleChange}
         />
         <input
+          placeholder="gender"
           type="text"
           name="gender"
           value={formValue.gender}
           onChange={handleChange}
         />
         <input
+          placeholder="age"
           type="number"
           name="age"
           value={formValue.age}
           onChange={handleChange}
         />
         <input
+          placeholder="descpirtion"
           type="text"
           name="description"
           value={formValue.description}
           onChange={handleChange}
         />
         <input
+          placeholder="hobbies"
           type="hobbies"
           name="hobbies"
           value={formValue.hobbies}
