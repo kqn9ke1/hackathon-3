@@ -85,7 +85,7 @@ const UserItem: React.FC<propsType> = ({ item }) => {
             ></CardMedia>
             <h2>{item.name}</h2>
 
-            <div className="swipe_info" style={{ color: "black" }}>
+            <div className="swipe_info">
               {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
             </div>
           </CardContent>
