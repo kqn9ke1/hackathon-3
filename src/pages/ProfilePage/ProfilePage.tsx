@@ -64,7 +64,7 @@ const ProfilePage = () => {
           >
             <CardMedia
               component={"img"}
-              src={me[0].image}
+              src={me[0]?.image || ""}
               sx={{
                 maxWidth: "300px",
                 width: "100%",
@@ -76,28 +76,28 @@ const ProfilePage = () => {
               className="info_con"
               sx={{ maxWidth: "350px", width: "100%", m: "auto" }}
             >
-              <h1>{me[0].name}</h1>
-              <h2>{me[0].age} y.o.</h2>
+              <h1>{me[0]?.name || ""}</h1>
+              <h2>{me[0]?.age || ""} y.o.</h2>
               <br />
               <p>
                 <strong>About me: </strong>
-                {me[0].description}
+                {me[0]?.description || ""}
               </p>
               <p>
-                <strong>Gender: </strong> {me[0].gender}
+                <strong>Gender: </strong> {me[0]?.gender || ""}
               </p>
               <p>
-                <strong>Email: </strong> {me[0].email}
+                <strong>Email: </strong> {me[0]?.email || ""}
               </p>
               <p>
-                <strong>Hobbies: </strong> {me[0].hobbies}
+                <strong>Hobbies: </strong> {me[0]?.hobbies || ""}
               </p>
               <br />
               <Container className="buttons">
                 <Button
                   id="prof_btn"
                   component={Link}
-                  to={`/edit/${me[0].id}`}
+                  to={`/edit/${me[0]?.id}`}
                   onClick={() => editUser(me[0])}
                 >
                   Edit
@@ -106,7 +106,7 @@ const ProfilePage = () => {
                   id="prof_btn_del"
                   onClick={() => {
                     logout();
-                    deleteUser(me[0].id);
+                    deleteUser(me[0]?.id);
                   }}
                 >
                   Delete

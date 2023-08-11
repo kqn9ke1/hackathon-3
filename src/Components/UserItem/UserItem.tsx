@@ -71,7 +71,14 @@ const UserItem: React.FC<propsType> = ({ item }) => {
         onSwipe={(dir) => swiped(dir, item.name)}
         onCardLeftScreen={() => outOfFrame(item.name)}
       >
-        <Card sx={{ width: 420, mb: "20px", position: "absolute" }}>
+        <Card
+          sx={{
+            width: 420,
+            mb: "20px",
+            position: "absolute",
+            right: "-200px",
+          }}
+        >
           <CardContent>
             <CardMedia
               component={"img"}

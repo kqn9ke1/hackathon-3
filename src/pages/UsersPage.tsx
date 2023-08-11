@@ -18,10 +18,10 @@ const UsersPage = () => {
       <Box sx={{ maxWidth: "max-content", margin: "30px auto" }}>
         <Filter />
       </Box>
-      <Users />
       <Box sx={{ maxWidth: "max-content", margin: "30px auto" }}>
         <Pagination />
       </Box>
+      <Users />
     </div>
   );
 };
