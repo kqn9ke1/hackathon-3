@@ -2,7 +2,6 @@ export type usersContextType = {
   getTotalPageCount: () => void;
   users: user[] | null;
   user: user | null;
-  emailUser: user | null;
   getUsers: () => void;
   page: number;
   pageTotalCount: number;
@@ -12,7 +11,6 @@ export type usersContextType = {
   deleteUser: (id: number) => void;
   editUser: (newData: user) => void;
   getOneUser: (id: number) => void;
-  getEmailUser: (email: string) => void;
 };
 export type user = {
   id: number;
@@ -40,7 +38,6 @@ export type initSateType = {
   pageTotalCount: any;
   users: user[] | null;
   user: user | null;
-  emailUser: user | null;
 };
 
 type usersActionType = {
@@ -51,10 +48,7 @@ type userActionType = {
   type: "user";
   payload: user | null;
 };
-type emailUserActionType = {
-  type: "emailUser";
-  payload: user | null;
-};
+
 type pageTotalCountType = {
   type: "pageTotalCount";
   payload: number;
@@ -62,5 +56,4 @@ type pageTotalCountType = {
 export type allActionType =
   | usersActionType
   | userActionType
-  | pageTotalCountType
-  | emailUserActionType;
+  | pageTotalCountType;

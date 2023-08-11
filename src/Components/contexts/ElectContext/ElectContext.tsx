@@ -57,17 +57,12 @@ const ElectContext: FC<IElectContextProps> = ({ children }) => {
     return isInElect;
   }
 
-  function clearElect() {
-    localStorage.removeItem("Elect");
-    getElect();
-  }
   const value = {
     elect,
     getElect,
     addUserToElect,
     deleteUserFromElect,
     isAlreadyInElect,
-    clearElect,
   };
   return (
     <electContext.Provider value={value}>{children}</electContext.Provider>

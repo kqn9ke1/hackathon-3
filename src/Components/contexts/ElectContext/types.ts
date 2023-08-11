@@ -10,5 +10,4 @@ export interface IElectContextTypes {
   addUserToElect: (user: user) => void;
   deleteUserFromElect: (id: number) => void;
   isAlreadyInElect: (id: number) => boolean;
-  clearElect: () => void;
 }

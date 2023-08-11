@@ -13,9 +13,7 @@ import "../DetailPage/detailPage.css";
 
 const DetailPage = () => {
   const { id } = useParams();
-  const { user, getOneUser, deleteUser, editUser } = useContext(
-    usersContext
-  ) as usersContextType;
+  const { user, getOneUser } = useContext(usersContext) as usersContextType;
 
   useEffect(() => {
     id && getOneUser(+id);

@@ -22,7 +22,6 @@ interface IAuthContextTypes {
   register: (credentials: IUserCredentials) => void;
   login: (credentials: IUserCredentials) => void;
   logout: () => void;
-  isAdmin: () => boolean;
 }
 interface IUserCredentials {
   email: string;
@@ -56,7 +55,7 @@ const AuthContext: FC<IAuthContextProps> = ({ children }) => {
   async function logout() {
     try {
       await signOut(auth);
-      navigate("/auth");
+      navigate("/");
     } catch (e: any) {
       alert(e.code);
     }
@@ -68,20 +67,11 @@ const AuthContext: FC<IAuthContextProps> = ({ children }) => {
     });
   }, []);
 
-  function isAdmin() {
-    if (!user) {
-      return false;
-    }
-
-    return ADMINS.includes(user.email as string);
-  }
-
   const value = {
     user,
     register,
     login,
     logout,
-    isAdmin,
   };
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
