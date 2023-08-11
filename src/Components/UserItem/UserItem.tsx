@@ -44,9 +44,9 @@ const UserItem: React.FC<propsType> = ({ item }) => {
     usersContext
   ) as usersContextType;
 
-  console.log(item);
+  // console.log(item);
 
-  console.log(users);
+  // console.log(users);
 
   const [lastDirection, setLastDirection] = React.useState();
 
